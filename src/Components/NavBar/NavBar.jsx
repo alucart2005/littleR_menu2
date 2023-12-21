@@ -4,7 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
 import { useState } from "react";
-import { Data } from "./NavBar/Data";
+import { Data } from "./Data";
 import "./NavBar.css";
 
 
