@@ -6,7 +6,7 @@ import * as IoIcons from "react-icons/io";
 import { useState } from "react";
 import { Data } from "./Data";
 import "./NavBar.css";
-
+import styled from "styled-components";
 
 export function NavBar() {
   const [sidebar, setSidebar] = useState(false);
@@ -15,31 +15,53 @@ export function NavBar() {
   return (
     <div>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar">
-          <Link to="#" className="menu-bars" onClick={showSidebar}>
-            <FaIcons.FaBars />
-          </Link>
-        </div>
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-              <IoIcons.IoIosCloseCircleOutline />
-              </Link>
-            </li>
-            {Data.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <Nav>
+          <NavIcon to="#">
+            <FaIcons.FaBars onClick={showSidebar} />
+          </NavIcon>
+          <SidebarNav sidebar={sidebar}>
+            <SidebarWrap>
+              <NavIcon to="#">   {/* LA X*/}
+                <AiIcons.AiOutlineClose
+                  onClick={showSidebar}
+                ></AiIcons.AiOutlineClose>
+              </NavIcon>
+              
+            </SidebarWrap>
+          </SidebarNav>
+        </Nav>
       </IconContext.Provider>
     </div>
   );
 }
+
+const Nav = styled.div`
+  background: #15171c;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+const NavIcon = styled(Link)`
+  margin-left: 2rem;
+  font-size: 2rem;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+const SidebarNav = styled.nav`
+  background: #15171c;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
+  transition: 350ms;
+  z-index: 10;
+`;
+const SidebarWrap = styled.div`
+  width: 100%;
+`;
