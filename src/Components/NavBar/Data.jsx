@@ -17,6 +17,18 @@ export const Data = [
     icon: <FaIcons.FaCartPlus />,
     iconClosed: <RiIcons.RiArrowDownFill />,
     iconOpened: <RiIcons.RiArrowUpFill />,
+    subNav: [
+      {
+        title: "Report 1",
+        path: "/reports/reports1",
+        icon: <IoIcons.IoIosPaper />,
+      },
+      {
+        title: "Report 2",
+        path: "/reports/reports2",
+        icon: <IoIcons.IoIosPaper />,
+      },
+    ],
   },
   {
     title: "Products",

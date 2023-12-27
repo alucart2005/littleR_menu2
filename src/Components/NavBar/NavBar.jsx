@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
 import * as AiIcons from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";
-import * as IoIcons from "react-icons/io";
 import { useState } from "react";
 import { Data } from "./Data";
 import "./NavBar.css";
 import styled from "styled-components";
+import { SubMenu } from "./SubMenu";
 
 export function NavBar() {
   const [sidebar, setSidebar] = useState(false);
@@ -26,7 +26,9 @@ export function NavBar() {
                   onClick={showSidebar}
                 ></AiIcons.AiOutlineClose>
               </NavIcon>
-              
+              {Data.map((item,index)=>{
+                return <SubMenu key={index} item={item} close={showSidebar}/>
+              })}
             </SidebarWrap>
           </SidebarNav>
         </Nav>
@@ -41,6 +43,8 @@ const Nav = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  color:white;
 `;
 const NavIcon = styled(Link)`
   margin-left: 2rem;
